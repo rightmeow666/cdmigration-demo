@@ -11,6 +11,8 @@ import Foundation
 import CoreData
 
 @objc(User)
-public class User: NSManagedObject {
+final public class User: CDBaseRecord {
 
 }
+
+extension User: ActivePersistable {}

@@ -13,5 +13,6 @@ class ActivePersistence: NSObject {
     
     private override init() {
         super.init()
+        print(123)
     }
 }

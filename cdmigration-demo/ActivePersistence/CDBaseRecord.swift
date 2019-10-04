@@ -1,18 +1,14 @@
 //
-//  Post+CoreDataClass.swift
+//  CDBaseRecord.swift
 //  cdmigration-demo
 //
 //  Created by Jin He on 10/4/19.
 //  Copyright © 2019 Jin He. All rights reserved.
 //
-//
 
 import Foundation
 import CoreData
 
-@objc(Post)
-final public class Post: CDBaseRecord {
-
+public class CDBaseRecord: NSManagedObject {
+    
 }
-
-extension Post: ActivePersistable {}
