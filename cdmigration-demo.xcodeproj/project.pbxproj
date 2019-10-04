@@ -13,6 +13,7 @@
 		28D9BC712347F36000DF7230 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28D9BC6F2347F36000DF7230 /* Main.storyboard */; };
 		28D9BC732347F36100DF7230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28D9BC722347F36100DF7230 /* Assets.xcassets */; };
 		28D9BC762347F36100DF7230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28D9BC742347F36100DF7230 /* LaunchScreen.storyboard */; };
+		28D9BC7F2347F3B200DF7230 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC7D2347F3B200DF7230 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		28D9BC722347F36100DF7230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28D9BC752347F36100DF7230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28D9BC772347F36100DF7230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28D9BC7E2347F3B200DF7230 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				28D9BC722347F36100DF7230 /* Assets.xcassets */,
 				28D9BC742347F36100DF7230 /* LaunchScreen.storyboard */,
 				28D9BC772347F36100DF7230 /* Info.plist */,
+				28D9BC7D2347F3B200DF7230 /* Model.xcdatamodeld */,
 			);
 			path = "cdmigration-demo";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				28D9BC6E2347F36000DF7230 /* ViewController.swift in Sources */,
 				28D9BC6A2347F36000DF7230 /* AppDelegate.swift in Sources */,
 				28D9BC6C2347F36000DF7230 /* SceneDelegate.swift in Sources */,
+				28D9BC7F2347F3B200DF7230 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +342,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		28D9BC7D2347F3B200DF7230 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				28D9BC7E2347F3B200DF7230 /* Model.xcdatamodel */,
+			);
+			currentVersion = 28D9BC7E2347F3B200DF7230 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 28D9BC5E2347F36000DF7230 /* Project object */;
 }
