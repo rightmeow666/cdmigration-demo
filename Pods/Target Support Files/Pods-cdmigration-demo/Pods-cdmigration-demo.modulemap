@@ -1,0 +1,6 @@
+framework module Pods_cdmigration_demo {
+  umbrella header "Pods-cdmigration-demo-umbrella.h"
+
+  export *
+  module * { export * }
+}
