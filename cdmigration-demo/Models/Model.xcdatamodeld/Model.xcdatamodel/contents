@@ -13,7 +13,7 @@
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Post" inverseName="user" inverseEntity="Post"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="Post" positionX="185.10546875" positionY="-18.484375" width="128" height="103"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

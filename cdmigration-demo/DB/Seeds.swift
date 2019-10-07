@@ -7,15 +7,33 @@
 //
 
 import Foundation
+import Fakery
 
 struct Seeds {
-    func make(userCount: Int, postCountPerUser: Int) throws {
+    static func make(userCount: Int, postCountPerUser: Int) throws {
+        let faker = Faker(locale: "nb-NO")
+        
         for _ in 0 ..< userCount {
-            // TODO: make users
-            
-            for _ in 0 ..< postCountPerUser {
-                // TODO: make posts
-                
+            CoreDataManager.shared.persistentContainer.performBackgroundTask { (moc) in
+                let u = User(context: moc)
+                u.save(moc, block: {
+                    u.email = faker.internet.email()
+                    u.id = faker.internet.password()
+                    u.name = faker.internet.username()
+                    for _ in 0 ..< postCountPerUser {
+                        let p = Post(context: moc)
+                        p.createdAt = Date()
+                        p.title = faker.lorem.word()
+                        p.updatedAt = Date()
+                    }
+                }) { (result) in
+                    switch result {
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                    case .success:
+                        print("success")
+                    }
+                }
             }
         }
     }
