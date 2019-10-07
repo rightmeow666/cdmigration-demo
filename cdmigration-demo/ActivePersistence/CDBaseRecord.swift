@@ -10,5 +10,4 @@ import Foundation
 import CoreData
 
 public class CDBaseRecord: NSManagedObject {
-    
 }

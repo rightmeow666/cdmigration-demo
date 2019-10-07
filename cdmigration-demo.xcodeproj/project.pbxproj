@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		28D9BC8E2347F7E300DF7230 /* ActivePersistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC8D2347F7E300DF7230 /* ActivePersistable.swift */; };
 		28D9BC902347F80700DF7230 /* CDBaseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC8F2347F80700DF7230 /* CDBaseRecord.swift */; };
 		28D9BC962347FA4400DF7230 /* Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC952347FA4400DF7230 /* Seeds.swift */; };
+		28D9BC98234924D700DF7230 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC97234924D700DF7230 /* CoreDataManager.swift */; };
+		28D9BC9A2349251800DF7230 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC992349251800DF7230 /* Environment.swift */; };
 		71451ED52FF7B06C7F1A55AC /* Pods_cdmigration_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4C81517470F6576288D389 /* Pods_cdmigration_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		28D9BC8D2347F7E300DF7230 /* ActivePersistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePersistable.swift; sourceTree = "<group>"; };
 		28D9BC8F2347F80700DF7230 /* CDBaseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDBaseRecord.swift; sourceTree = "<group>"; };
 		28D9BC952347FA4400DF7230 /* Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeds.swift; sourceTree = "<group>"; };
+		28D9BC97234924D700DF7230 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		28D9BC992349251800DF7230 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		737B77F0CFE40AD8D1B2F960 /* Pods-cdmigration-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cdmigration-demo.release.xcconfig"; path = "Target Support Files/Pods-cdmigration-demo/Pods-cdmigration-demo.release.xcconfig"; sourceTree = "<group>"; };
 		DD0F090B4DD90C9968FBF3F1 /* Pods-cdmigration-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cdmigration-demo.debug.xcconfig"; path = "Target Support Files/Pods-cdmigration-demo/Pods-cdmigration-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,11 +104,11 @@
 		28D9BC8A2347F56900DF7230 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				28D9BC7D2347F3B200DF7230 /* Model.xcdatamodeld */,
 				28D9BC822347F55E00DF7230 /* Post+CoreDataClass.swift */,
 				28D9BC832347F55E00DF7230 /* Post+CoreDataProperties.swift */,
 				28D9BC842347F55E00DF7230 /* User+CoreDataClass.swift */,
 				28D9BC852347F55E00DF7230 /* User+CoreDataProperties.swift */,
+				28D9BC7D2347F3B200DF7230 /* Model.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,9 +116,10 @@
 		28D9BC8B2347F57400DF7230 /* ActivePersistence */ = {
 			isa = PBXGroup;
 			children = (
-				28D9BC802347F4E000DF7230 /* ActivePersistence.swift */,
 				28D9BC8D2347F7E300DF7230 /* ActivePersistable.swift */,
+				28D9BC802347F4E000DF7230 /* ActivePersistence.swift */,
 				28D9BC8F2347F80700DF7230 /* CDBaseRecord.swift */,
+				28D9BC97234924D700DF7230 /* CoreDataManager.swift */,
 			);
 			path = ActivePersistence;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 				28D9BC722347F36100DF7230 /* Assets.xcassets */,
 				28D9BC742347F36100DF7230 /* LaunchScreen.storyboard */,
 				28D9BC6F2347F36000DF7230 /* Main.storyboard */,
+				28D9BC992349251800DF7230 /* Environment.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -155,7 +161,6 @@
 				DD0F090B4DD90C9968FBF3F1 /* Pods-cdmigration-demo.debug.xcconfig */,
 				737B77F0CFE40AD8D1B2F960 /* Pods-cdmigration-demo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -277,10 +282,12 @@
 				28D9BC6E2347F36000DF7230 /* ViewController.swift in Sources */,
 				28D9BC862347F55E00DF7230 /* Post+CoreDataClass.swift in Sources */,
 				28D9BC962347FA4400DF7230 /* Seeds.swift in Sources */,
+				28D9BC9A2349251800DF7230 /* Environment.swift in Sources */,
 				28D9BC6A2347F36000DF7230 /* AppDelegate.swift in Sources */,
 				28D9BC6C2347F36000DF7230 /* SceneDelegate.swift in Sources */,
 				28D9BC872347F55E00DF7230 /* Post+CoreDataProperties.swift in Sources */,
 				28D9BC7F2347F3B200DF7230 /* Model.xcdatamodeld in Sources */,
+				28D9BC98234924D700DF7230 /* CoreDataManager.swift in Sources */,
 				28D9BC8E2347F7E300DF7230 /* ActivePersistable.swift in Sources */,
 				28D9BC882347F55E00DF7230 /* User+CoreDataClass.swift in Sources */,
 				28D9BC812347F4E000DF7230 /* ActivePersistence.swift in Sources */,

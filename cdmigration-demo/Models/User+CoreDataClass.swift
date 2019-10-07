@@ -15,4 +15,5 @@ final public class User: CDBaseRecord {
 
 }
 
-extension User: ActivePersistable {}
+extension User: ActivePersistable {
+}

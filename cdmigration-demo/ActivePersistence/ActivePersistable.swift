@@ -15,6 +15,8 @@ typealias OnSaveBlock = () -> Void
 
 typealias AfterSaveBlock = () -> Void
 
+typealias CompletionBlock = (Result<Void, Error>) -> Void
+
 protocol ActivePersistable where Self: CDBaseRecord {
     var beforeSave: BeforeSaveBlock? { get }
     
@@ -22,15 +24,17 @@ protocol ActivePersistable where Self: CDBaseRecord {
     
     var isValid: Bool { get }
     
-    static func find(_ id: String) -> Self?
+    static func find(_ moc: NSManagedObjectContext, id: String) -> Self?
     
-    static func findAll() -> [Self]
+    static func findAll(_ moc: NSManagedObjectContext, byPredicate predicate: NSPredicate?, sortedBy sortDescriptors: [NSSortDescriptor]?) -> [Self]
     
-    static func purge() throws
+    static func deleteAll(_ moc: NSManagedObjectContext, objects: [Self], completion: @escaping CompletionBlock)
     
-    func save(_ block: OnSaveBlock) throws
+    static func purge(_ moc: NSManagedObjectContext, completion: @escaping CompletionBlock)
     
-    func delete() throws
+    func save(_ moc: NSManagedObjectContext, block: @escaping OnSaveBlock, completion: @escaping CompletionBlock)
+    
+    func delete(_ moc: NSManagedObjectContext, completion: @escaping CompletionBlock)
 }
 
 extension ActivePersistable {
@@ -47,21 +51,89 @@ extension ActivePersistable {
         }
     }
     
-    static func find(_ id: String) -> Self? {
-        return nil
+    static func find(_ moc: NSManagedObjectContext, id: String) -> Self? {
+        let predicate = NSPredicate(format: "id == %@", id)
+        guard let entityName = Self.entity().name else { return nil }
+        let fr = NSFetchRequest<Self>(entityName: entityName)
+        fr.predicate = predicate
+        do {
+            return try moc.fetch(fr).first
+        } catch let err {
+            print(err)
+            return nil
+        }
     }
     
-    static func findAll() -> [Self] {
-        return []
+    static func findAll(_ moc: NSManagedObjectContext, byPredicate predicate: NSPredicate? = nil, sortedBy sortDescriptors: [NSSortDescriptor]? = nil) -> [Self] {
+        guard let entityName = Self.entity().name else { return [] }
+        let fr = NSFetchRequest<Self>(entityName: entityName)
+        fr.predicate = predicate
+        fr.sortDescriptors = sortDescriptors
+        do {
+            return try moc.fetch(fr)
+        } catch let err {
+            print(err)
+            return []
+        }
     }
     
-    static func purge() throws {}
-    
-    func save(_ block: OnSaveBlock) throws {
-        block()
-        try self.beforeSave?()
-        self.afterSave?()
+    static func deleteAll(_ moc: NSManagedObjectContext, objects: [Self], completion: @escaping CompletionBlock) {
+        moc.perform {
+            objects.forEach( { moc.delete($0) })
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                    completion(.success(()))
+                } catch let error {
+                    completion(.failure(error))
+                }
+            }
+        }
     }
     
-    func delete() throws {}
+    static func purge(_ moc: NSManagedObjectContext, completion: @escaping CompletionBlock) {
+        let allObjects = self.findAll(moc)
+        if allObjects.count == 0 {
+            completion(.success(()))
+        } else {
+            self.deleteAll(moc, objects: allObjects) { (result) in
+                switch result {
+                case .failure(let err):
+                    completion(.failure(err))
+                case .success(()):
+                    completion(.success(()))
+                }
+            }
+        }
+    }
+    
+    func save(_ moc: NSManagedObjectContext, block: @escaping OnSaveBlock, completion: @escaping CompletionBlock) {
+        moc.perform {
+            do {
+                block()
+                try self.beforeSave?()
+                if moc.hasChanges {
+                    try moc.save()
+                }
+                self.afterSave?()
+                completion(.success(()))
+            } catch let err {
+                completion(.failure(err))
+            }
+        }
+    }
+    
+    func delete(_ moc: NSManagedObjectContext, completion: @escaping CompletionBlock) {
+        moc.perform {
+            moc.delete(self)
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                    completion(.success(()))
+                } catch let error {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

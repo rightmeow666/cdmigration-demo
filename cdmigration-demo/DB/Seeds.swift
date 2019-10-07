@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+struct Seeds {
+    func make(userCount: Int, postCountPerUser: Int) throws {
+        for _ in 0 ..< userCount {
+            // TODO: make users
+            
+            for _ in 0 ..< postCountPerUser {
+                // TODO: make posts
+                
+            }
+        }
+    }
+}
