@@ -62,7 +62,7 @@ class CoreDataManager: NSObject {
     
     private init(_ env: Environment = .development) {
         self.env = env
-        let container = NSPersistentContainer()
+        let container = NSPersistentContainer(name: "Model")
         switch env {
         case .development:
             break
