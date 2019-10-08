@@ -29,6 +29,10 @@ class CoreDataManager: NSObject {
     return URL(string: "")
   }()
   
+  lazy private var pathForSqliteStore: String? = {
+    return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last?.absoluteString.removingPercentEncoding
+  }()
+  
   func newBackgroundContext() -> NSManagedObjectContext {
     let context = self.persistentContainer.newBackgroundContext()
     context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -49,6 +53,7 @@ class CoreDataManager: NSObject {
         fatalError("Failed to load persistent container of type under \(self.env) environment: \(err)")
       } else {
         print("PersistentContainer loaded in \(timeInterval) seconds under \(self.env) environment")
+        print(self.pathForSqliteStore!)
       }
     }
   }
