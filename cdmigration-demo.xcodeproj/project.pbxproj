@@ -26,6 +26,7 @@
 		71451ED52FF7B06C7F1A55AC /* Pods_cdmigration_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E4C81517470F6576288D389 /* Pods_cdmigration_demo.framework */; };
 		F5430926234CF697003CA993 /* ActiveMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5430925234CF697003CA993 /* ActiveMigrationManager.swift */; };
 		F543092A234D326F003CA993 /* ActiveMigratable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5430929234D326F003CA993 /* ActiveMigratable.swift */; };
+		F543092C234D3DDD003CA993 /* AddDatetimeToUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543092B234D3DDC003CA993 /* AddDatetimeToUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		DD0F090B4DD90C9968FBF3F1 /* Pods-cdmigration-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cdmigration-demo.debug.xcconfig"; path = "Target Support Files/Pods-cdmigration-demo/Pods-cdmigration-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		F5430925234CF697003CA993 /* ActiveMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveMigrationManager.swift; sourceTree = "<group>"; };
 		F5430929234D326F003CA993 /* ActiveMigratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveMigratable.swift; sourceTree = "<group>"; };
+		F543092B234D3DDC003CA993 /* AddDatetimeToUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddDatetimeToUser.swift; path = "cdmigration-demo/ActivePersistence/AddDatetimeToUser.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		28D9BC942347FA3C00DF7230 /* Migrate */ = {
 			isa = PBXGroup;
 			children = (
+				F543092B234D3DDC003CA993 /* AddDatetimeToUser.swift */,
 			);
 			path = Migrate;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				F5430926234CF697003CA993 /* ActiveMigrationManager.swift in Sources */,
 				28D9BC872347F55E00DF7230 /* Post+CoreDataProperties.swift in Sources */,
 				28D9BC7F2347F3B200DF7230 /* Model.xcdatamodeld in Sources */,
+				F543092C234D3DDD003CA993 /* AddDatetimeToUser.swift in Sources */,
 				28D9BC98234924D700DF7230 /* CoreDataManager.swift in Sources */,
 				28D9BC8E2347F7E300DF7230 /* ActivePersistable.swift in Sources */,
 				28D9BC882347F55E00DF7230 /* User+CoreDataClass.swift in Sources */,

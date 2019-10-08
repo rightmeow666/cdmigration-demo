@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ActiveMigrationManager {
+struct ActiveMigrationManager{
   private let orderedListOfMigratables: [ActiveMigratable]
   
   private var pendingMigrations: [ActiveMigratable] {

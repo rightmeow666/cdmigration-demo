@@ -14,7 +14,7 @@ typealias OnMigrationBlock = () throws -> Void
 
 typealias AfterMigrationBlock = () -> Void
 
-protocol ActiveMigratable: NSObjectProtocol {
+protocol ActiveMigratable: class {  
   var onMigrate: OnMigrationBlock { get }
   
   var beforeMigrate: BeforeMigrationBlock? { get }
@@ -25,10 +25,6 @@ protocol ActiveMigratable: NSObjectProtocol {
 }
 
 extension ActiveMigratable {
-  var beforeMigrate: BeforeMigrationBlock? { return nil }
-  
-  var afterMigrate: AfterMigrationBlock? { return nil }
-  
   func perform() throws {
     self.beforeMigrate?()
     try self.onMigrate()
