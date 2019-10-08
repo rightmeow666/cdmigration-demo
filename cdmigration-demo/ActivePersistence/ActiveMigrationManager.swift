@@ -9,7 +9,7 @@
 import Foundation
 
 struct ActiveMigrationManager {
-  private let listOfMigratables: [ActiveMigratable]
+  private let orderedListOfMigratables: [ActiveMigratable]
   
   private var pendingMigrations: [ActiveMigratable] {
     // TODO: loop through migration path files to find any pending files
@@ -33,7 +33,7 @@ struct ActiveMigrationManager {
     }
   }
   
-  init(listOfMigratables: [ActiveMigratable] = []) {
-    self.listOfMigratables = listOfMigratables
+  init(orderedListOfMigratables: [ActiveMigratable]) {
+    self.orderedListOfMigratables = orderedListOfMigratables
   }
 }

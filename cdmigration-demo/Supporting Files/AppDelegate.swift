@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //    try! Seeds.make(userCount: 10, postCountPerUser: 5)
     // TODO: add some migrations to the init
-    let m = ActiveMigrationManager(listOfMigratables: [])
+    let m = ActiveMigrationManager(orderedListOfMigratables: [])
     m.exec { (result) in
       switch result {
       case .failure(let err):
