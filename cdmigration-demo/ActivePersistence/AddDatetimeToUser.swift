@@ -18,6 +18,8 @@ final class AddDatetimeToUser: ActiveMigratable {
   }
   
   var onMigrate: OnMigrationBlock {
-    return {}
+    return {
+      print("lightweight migration, nothing to do there")
+    }
   }
 }
