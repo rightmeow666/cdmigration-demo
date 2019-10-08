@@ -21,6 +21,8 @@ protocol ActiveMigratable {
   
   var afterMigrate: AfterMigrationBlock? { get }
   
+  var hasValidObjectName: Bool { get }
+  
   func perform() throws
 }
 
@@ -30,6 +32,9 @@ extension ActiveMigratable {
   var afterMigrate: AfterMigrationBlock? { return nil }
   
   func perform() throws {
+    if !self.hasValidObjectName {
+      fatalError("Migration file does not conform to the valid naming convention.")
+    }
     self.beforeMigrate?()
     try self.onMigrate()
     self.afterMigrate?()

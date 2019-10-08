@@ -8,23 +8,8 @@
 
 import Foundation
 
-enum MigrationDirectory {
-  case `default`
-  case custom(_ path: String)
-  
-  var path: String {
-    switch self {
-    case .default:
-      // TODO: defines a default path in the app directory
-      return ""
-    case .custom(let p):
-      return p
-    }
-  }
-}
-
 struct ActiveMigrationManager {
-  private let pathForMigrationDir: String
+  private let listOfMigratables: [ActiveMigratable]
   
   private var pendingMigrations: [ActiveMigratable] {
     // TODO: loop through migration path files to find any pending files
@@ -48,7 +33,7 @@ struct ActiveMigrationManager {
     }
   }
   
-  init(pathForMigrationDir: MigrationDirectory = .default) {
-    self.pathForMigrationDir = pathForMigrationDir.path
+  init(listOfMigratables: [ActiveMigratable] = []) {
+    self.listOfMigratables = listOfMigratables
   }
 }

@@ -14,7 +14,6 @@
 		28D9BC732347F36100DF7230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28D9BC722347F36100DF7230 /* Assets.xcassets */; };
 		28D9BC762347F36100DF7230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28D9BC742347F36100DF7230 /* LaunchScreen.storyboard */; };
 		28D9BC7F2347F3B200DF7230 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC7D2347F3B200DF7230 /* Model.xcdatamodeld */; };
-		28D9BC812347F4E000DF7230 /* ActivePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC802347F4E000DF7230 /* ActivePersistence.swift */; };
 		28D9BC862347F55E00DF7230 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC822347F55E00DF7230 /* Post+CoreDataClass.swift */; };
 		28D9BC872347F55E00DF7230 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC832347F55E00DF7230 /* Post+CoreDataProperties.swift */; };
 		28D9BC882347F55E00DF7230 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D9BC842347F55E00DF7230 /* User+CoreDataClass.swift */; };
@@ -40,7 +39,6 @@
 		28D9BC752347F36100DF7230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28D9BC772347F36100DF7230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28D9BC7E2347F3B200DF7230 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		28D9BC802347F4E000DF7230 /* ActivePersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePersistence.swift; sourceTree = "<group>"; };
 		28D9BC822347F55E00DF7230 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 		28D9BC832347F55E00DF7230 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		28D9BC842347F55E00DF7230 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				F5430929234D326F003CA993 /* ActiveMigratable.swift */,
 				F5430925234CF697003CA993 /* ActiveMigrationManager.swift */,
 				28D9BC8D2347F7E300DF7230 /* ActivePersistable.swift */,
-				28D9BC802347F4E000DF7230 /* ActivePersistence.swift */,
 				28D9BC8F2347F80700DF7230 /* CDBaseRecord.swift */,
 				28D9BC97234924D700DF7230 /* CoreDataManager.swift */,
 			);
@@ -298,7 +295,6 @@
 				28D9BC98234924D700DF7230 /* CoreDataManager.swift in Sources */,
 				28D9BC8E2347F7E300DF7230 /* ActivePersistable.swift in Sources */,
 				28D9BC882347F55E00DF7230 /* User+CoreDataClass.swift in Sources */,
-				28D9BC812347F4E000DF7230 /* ActivePersistence.swift in Sources */,
 				28D9BC892347F55E00DF7230 /* User+CoreDataProperties.swift in Sources */,
 				28D9BC902347F80700DF7230 /* CDBaseRecord.swift in Sources */,
 			);
