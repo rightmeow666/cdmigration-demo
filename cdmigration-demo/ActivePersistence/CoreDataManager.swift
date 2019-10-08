@@ -69,6 +69,23 @@ class CoreDataManager: NSObject {
     }
   }
   
+  private var shouldMigrate: Bool {
+    // loop through migration folder to see if there is any new files
+    // if so, migrate == true, else == false
+    return true
+  }
+  
+  func migrate(withMigration migration: CDRecordMigration, block: (Result<Void, Error>) -> Void) {
+    if self.shouldMigrate {
+      do {
+        try migration.exec()
+        block(.success(()))
+      } catch let err {
+        block(.failure(err))
+      }
+    }
+  }
+  
   private init(_ env: Environment = .development) {
     self.env = env
     let container = NSPersistentContainer(name: "Model")
