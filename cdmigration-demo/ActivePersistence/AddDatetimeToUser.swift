@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class AddDatetimeToUser: ActiveMigratable {
+final class AddDatetimeToUser: BaseMigration, ActiveMigratable {
   var beforeMigrate: BeforeMigrationBlock? {
     return nil
   }

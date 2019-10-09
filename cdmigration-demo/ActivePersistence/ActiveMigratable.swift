@@ -14,7 +14,7 @@ typealias OnMigrationBlock = () throws -> Void
 
 typealias AfterMigrationBlock = () -> Void
 
-protocol ActiveMigratable: class {  
+protocol ActiveMigratable where Self: BaseMigration {
   var onMigrate: OnMigrationBlock { get }
   
   var beforeMigrate: BeforeMigrationBlock? { get }

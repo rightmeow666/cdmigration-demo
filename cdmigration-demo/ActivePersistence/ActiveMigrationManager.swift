@@ -9,18 +9,6 @@
 import Foundation
 
 struct ActiveMigrationManager{
-  struct ActiveMigrationArchive {
-    static let shared = ActiveMigrationArchive()
-    
-    func add(_ m: ActiveMigratable) {
-      
-    }
-    
-    func empty() {
-      
-    }
-  }
-  
   enum MigrationKey: String {
     case migrated = "Migrated"
   }
@@ -29,8 +17,26 @@ struct ActiveMigrationManager{
   private let orderedListOfMigratables: [ActiveMigratable]
   
   private var pendingMigrations: [ActiveMigratable] {
-    // TODO: loop through migration path files to find any pending files
-    return []
+    if let migrated = UserDefaults.standard.array(forKey: MigrationKey.migrated.rawValue) as? Array<String>, !migrated.isEmpty {
+      return self.orderedListOfMigratables.filter({ !migrated.contains($0.uuid) })
+    } else {
+      return self.orderedListOfMigratables
+    }
+  }
+  
+  private func archiveMigration(_ m: ActiveMigratable) {
+    if var migrated = UserDefaults.standard.array(forKey: MigrationKey.migrated.rawValue) as? Array<String> {
+      migrated.append(m.uuid)
+      UserDefaults.standard.set(migrated, forKey: MigrationKey.migrated.rawValue)
+    } else {
+      var arr = Array<String>()
+      arr.append(m.uuid)
+      UserDefaults.standard.set(arr, forKey: MigrationKey.migrated.rawValue)
+    }
+  }
+  
+  private func emptyMigrationArchive() {
+    UserDefaults.standard.removeObject(forKey: MigrationKey.migrated.rawValue)
   }
   
   func exec(completion: (Result<Void, Error>) -> Void) {
@@ -38,8 +44,8 @@ struct ActiveMigrationManager{
       do {
         try self.pendingMigrations.forEach { (m) in
           try m.perform()
-          // TODO: store migrated refs in UserDefaults
-          ActiveMigrationArchive.shared.add(m)
+          self.archiveMigration(m)
+          print("migrated \(m.uuid)")
         }
         completion(.success(()))
       } catch let err {
